@@ -1,0 +1,87 @@
+Q1 - What is an interface in java ?
+
+ANS - In Java, an interface is a blueprint that defines the behavior of a class. It specifies what a class must do (the methods it must implement) but doesn't provide the implementation itself. Here's a breakdown of key aspects of interfaces:
+
+Purpose:
+
+Standardization: Interfaces promote code reusability and maintainability by establishing a contract between different parts of your program.
+Abstraction: They allow you to focus on "what" needs to be done without getting bogged down in "how" it's done. The implementation details are left to the classes that implement the interface.
+Polymorphism: Interfaces enable polymorphism, which allows you to treat objects of different classes that implement the same interface in a similar way.
+
+Q2 - What modifiers are allowed for methods in an interface ? Explain with an example.
+
+ANS - Allowed Modifiers:
+
+public: This is the default modifier for interface methods. It makes the method accessible from any class in the same package or any class with proper access permissions in different packages. Since interfaces are meant to be public contracts, all methods are implicitly public. You can explicitly declare them as public for clarity, but it's not mandatory.
+
+ Disallowed Modifiers:
+
+private: Interface methods cannot be private. The purpose of an interface is to define a public contract, and private methods wouldn't be accessible to implementing classes.
+
+protected: Protected methods are also not allowed in interfaces. Protection applies to inheritance hierarchies within classes, and interfaces don't participate in inheritance in the traditional sense.
+
+static: Interfaces cannot have static methods. Static methods are associated with the class itself, not with objects of the class. Interfaces define behavior for objects, so static methods wouldn't be a suitable concept here.
+
+abstract: This modifier is implicit for all interface methods. Since interfaces define what a class must do, methods within them don't have implementations and are inherently abstract. You cannot explicitly declare a method as abstract in an interface.
+
+final: Final methods are not allowed in interfaces. Final methods indicate that no subclass can override them. Interfaces themselves cannot be subclassed, so final wouldn't make sense in this context.
+
+synchronized: Synchronization is not applicable to interface methods. Interfaces define behavior, and synchronization deals with thread safety concerns within a class's implementation.
+
+Example - 
+
+public interface Shape {
+    void draw(); // Abstract method (no implementation)
+
+}
+
+
+public class Square implements Shape {
+    
+    public void draw() {
+        System.out.println("Drawing a square");
+    }
+}
+
+Q3 - What is the use of interface in java ? Why do we use an interface in java ?
+
+ANS -  Interfaces in Java serve multiple purposes that contribute to well-structured, maintainable, and flexible code. Here are some of the key reasons why interfaces are widely used:
+
+1. Abstraction:
+
+Interfaces promote abstraction by separating the "what" from the "how." They define the behavior that a class must exhibit (the methods it must implement) without providing the implementation details. This allows you to focus on the functionality you need without getting bogged down in the specifics of how it's achieved.
+ 
+ 2. Code Reusability:
+
+Interfaces enable code reuse by establishing a standard contract between different parts of your program. Classes that implement the same interface can be used interchangeably, as long as they provide implementations for the required methods. This promotes modularity and reduces code duplication.
+ 
+ 3. Loose Coupling:
+
+By using interfaces, you create a looser coupling between classes. Classes depend on the interface, not on the specific implementation details of a class that implements the interface. This makes your code more adaptable and easier to modify. If you need to change the implementation of a class, as long as it still fulfills the interface contract, other parts of your code won't be affected.
+
+ 4. Polymorphism:
+
+Interfaces are a cornerstone of polymorphism in Java. Polymorphism allows you to treat objects of different classes that implement the same interface in a similar way. You can declare a variable with the interface type and then assign objects of any class that implements the interface to that variable. This enables you to write more generic code that can work with various objects without knowing their specific classes beforehand.
+
+5. Improved Maintainability:
+
+Interfaces make code easier to understand and maintain. They clearly define the expected behavior of a class, making it easier to identify what a class can do and how it interacts with other parts of the program. Modifications or extensions to functionality can be made within the context of the interface, promoting better code organization.
+
+Q4 - What is the difference between interface and abstract class in java ?
+
+ANS - Interfaces:
+
+Focus: Interfaces define a contract or blueprint for what a class must do. They specify the methods a class must implement but don't provide any implementation details.
+Methods: Interfaces can only have abstract methods (no body).
+Implementation: Interfaces themselves cannot be instantiated. They are meant to be implemented by classes.
+Inheritance: Interfaces support multiple inheritance, meaning a class can implement multiple interfaces simultaneously.
+Use Cases: Ideal for defining standard behaviors that multiple classes can share, promoting loose coupling and polymorphism.
+
+
+Abstract Classes:
+
+Focus: Abstract classes provide a partial implementation of a concept. They can define abstract methods (without a body) and concrete methods (with an implementation).
+Methods: Can have both abstract and concrete methods.
+Implementation: Abstract classes can't be instantiated directly, but subclasses can extend them and inherit the implemented methods.
+Inheritance: A class can only extend one abstract class directly, but it can implement multiple interfaces.
+Use Cases: Useful for creating a base class that defines common behavior and state for a group of related classes, promoting code reuse and code organization.
